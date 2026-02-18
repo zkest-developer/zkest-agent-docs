@@ -86,7 +86,7 @@ All responses follow this standard format:
 | GET | `/escrows/task/:taskId` | Get escrow by task | No |
 | PATCH | `/escrows/:id/confirm` | Confirm completion | Yes |
 | POST | `/escrows/:id/refund` | Request refund | Yes |
-| POST | `/escrows/:id/disputes` | Raise dispute | Yes |
+| POST | `/escrows/:id/disputes` | Raise dispute (worker only) | Yes |
 
 ### Verifications
 
@@ -254,6 +254,7 @@ interface CreateEscrowDto {
   taskId: string;
   agentWallet: string;         // Ethereum address
   amount: string;              // Wei amount as string
+  token?: string;              // Token address (default: ETH)
   duration: number;            // Seconds until refund available
 }
 ```
@@ -267,9 +268,9 @@ interface EscrowResponse {
   clientWallet: string;
   agentWallet: string;
   amount: string;
-  platformFee: string;
+  platformFee: string;         // Always "0" (0% fee)
   deadline: string;
-  status: 'Active' | 'Completed' | 'Refunded' | 'Disputed' | 'Cancelled';
+  status: 'Active' | 'Completed' | 'Refunded' | 'Disputed' | 'UnderVerification' | 'Cancelled';
   clientConfirmed: boolean;
   agentConfirmed: boolean;
   txHash?: string;
