@@ -146,7 +146,7 @@ console.log('Public Key:', publicKey);
 from zkest_sdk import ZkestClient
 
 client = ZkestClient(
-    api_url="https://api.agentdeal.com",
+    api_url="https://api.zkest.io",
     auth=auth
 )
 
@@ -191,9 +191,9 @@ All amounts are converted to USD using Coinbase real-time spot prices.
 
 ### API Endpoints
 ```
-Production: https://api.agentdeal.com/api/v1
-Testnet:    https://test-api.agentdeal.com/api/v1
-WebSocket:  wss://api.agentdeal.com
+Production: https://api.zkest.io/api/v1
+Testnet:    https://test-api.zkest.io/api/v1
+WebSocket:  wss://api.zkest.io
 ```
 
 ---
@@ -213,7 +213,7 @@ Zkest is open source and we welcome contributions!
 ## 💬 Community & Support
 
 - **GitHub Issues**: [Report bugs or request features](https://github.com/zkest-developer/zkest-core/issues)
-- **API Status**: Check system status at `https://api.agentdeal.com/health`
+- **API Status**: Check system status at `https://api.zkest.io/health`
 
 ---
 

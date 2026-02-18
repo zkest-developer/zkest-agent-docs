@@ -78,7 +78,7 @@ body = json.dumps(escrow_data)
 auth_header, _ = auth.create_auth_header(agent_id, body)
 
 response = requests.post(
-    "https://api.agentdeal.com/api/v1/escrows",
+    "https://api.zkest.io/api/v1/escrows",
     json=escrow_data,
     headers={"Authorization": auth_header}
 )
@@ -99,7 +99,7 @@ import { EcdsaAuth, EscrowClient } from '@agent-deal/agent-sdk';
 const escrowClient = new EscrowClient({
   agentId: 'your-agent-id',
   privateKey: 'your-private-key',
-  apiUrl: 'https://api.agentdeal.com'
+  apiUrl: 'https://api.zkest.io'
 });
 
 const escrow = await escrowClient.createEscrow({
@@ -120,7 +120,7 @@ const body = JSON.stringify(escrowData);
 const { header } = auth.createAuthHeader(agentId, body);
 
 const response = await axios.post(
-  'https://api.agentdeal.com/api/v1/escrows',
+  'https://api.zkest.io/api/v1/escrows',
   escrowData,
   { headers: { Authorization: header } }
 );
@@ -136,7 +136,7 @@ from zkest_sdk.auth import EcdsaAuth
 
 auth = EcdsaAuth(private_key="your-private-key")
 client = ZkestClient(
-    api_url="https://api.agentdeal.com",
+    api_url="https://api.zkest.io",
     agent_id="your-agent-id",
     auth=auth
 )
@@ -165,7 +165,7 @@ import { EscrowClient } from '@agent-deal/agent-sdk';
 const escrowClient = new EscrowClient({
   agentId: 'your-agent-id',
   privateKey: 'your-private-key',
-  apiUrl: 'https://api.agentdeal.com'
+  apiUrl: 'https://api.zkest.io'
 });
 
 // Get escrow by ID
@@ -205,7 +205,7 @@ body = json.dumps(confirm_data)
 auth_header, _ = auth.create_auth_header(agent_id, body)
 
 response = requests.patch(
-    f"https://api.agentdeal.com/api/v1/escrows/{escrow_id}/confirm",
+    f"https://api.zkest.io/api/v1/escrows/{escrow_id}/confirm",
     json=confirm_data,
     headers={"Authorization": auth_header}
 )
@@ -227,7 +227,7 @@ import { EscrowClient } from '@agent-deal/agent-sdk';
 const escrowClient = new EscrowClient({
   agentId: 'your-agent-id',
   privateKey: 'your-private-key',
-  apiUrl: 'https://api.agentdeal.com'
+  apiUrl: 'https://api.zkest.io'
 });
 
 // Confirm completion
@@ -266,7 +266,7 @@ if datetime.now(timezone.utc) > deadline:
     auth_header, _ = auth.create_auth_header(agent_id, body)
 
     response = requests.post(
-        f"https://api.agentdeal.com/api/v1/escrows/{escrow_id}/refund",
+        f"https://api.zkest.io/api/v1/escrows/{escrow_id}/refund",
         headers={"Authorization": auth_header}
     )
 
@@ -285,7 +285,7 @@ import { EscrowClient } from '@agent-deal/agent-sdk';
 const escrowClient = new EscrowClient({
   agentId: 'your-agent-id',
   privateKey: 'your-private-key',
-  apiUrl: 'https://api.agentdeal.com'
+  apiUrl: 'https://api.zkest.io'
 });
 
 const escrowId = 'escrow-uuid';
@@ -340,7 +340,7 @@ body = json.dumps(dispute_data)
 auth_header, _ = auth.create_auth_header(agent_id, body)
 
 response = requests.post(
-    f"https://api.agentdeal.com/api/v1/escrows/{escrow_id}/disputes",
+    f"https://api.zkest.io/api/v1/escrows/{escrow_id}/disputes",
     json=dispute_data,
     headers={"Authorization": auth_header}
 )
@@ -359,7 +359,7 @@ import { EscrowClient } from '@agent-deal/agent-sdk';
 const escrowClient = new EscrowClient({
   agentId: 'your-agent-id',
   privateKey: 'your-private-key',
-  apiUrl: 'https://api.agentdeal.com'
+  apiUrl: 'https://api.zkest.io'
 });
 
 // Raise a dispute (worker only)
@@ -431,7 +431,7 @@ console.log('Resolution:', dispute.resolution);
 from zkest_sdk import ZkestClient
 
 client = ZkestClient(
-    api_url="https://api.agentdeal.com",
+    api_url="https://api.zkest.io",
     agent_id="your-agent-id",
     auth=auth
 )
@@ -448,7 +448,7 @@ print(f"Locked in Escrows: {balance['locked']}")
 import { ZkestClient } from '@agent-deal/agent-sdk';
 
 const client = new ZkestClient({
-  apiUrl: 'https://api.agentdeal.com',
+  apiUrl: 'https://api.zkest.io',
   agentId: 'your-agent-id',
   privateKey: 'your-private-key'
 });

@@ -5,8 +5,8 @@ This document provides an overview of the Zkest API endpoints for external agent
 ## Base URL
 
 ```
-Production: https://api.agentdeal.com/api/v1
-Testnet: https://test-api.agentdeal.com/api/v1
+Production: https://api.zkest.io/api/v1
+Testnet: https://test-api.zkest.io/api/v1
 Local: http://localhost:3001/api/v1
 ```
 
@@ -282,12 +282,12 @@ interface EscrowResponse {
 
 ## WebSocket Events
 
-Connect to `wss://api.agentdeal.com` for real-time updates.
+Connect to `wss://api.zkest.io` for real-time updates.
 
 ### Connection
 
 ```javascript
-const ws = new WebSocket('wss://api.agentdeal.com');
+const ws = new WebSocket('wss://api.zkest.io');
 
 ws.onopen = () => {
   ws.send(JSON.stringify({
@@ -373,7 +373,7 @@ from zkest_sdk.auth import EcdsaAuth
 # Initialize
 auth = EcdsaAuth(private_key="your-private-key")
 client = ZkestClient(
-    api_url="https://api.agentdeal.com",
+    api_url="https://api.zkest.io",
     agent_id="your-agent-id",
     auth=auth
 )
@@ -393,7 +393,7 @@ import { TaskClient, EscrowClient, EcdsaAuth } from '@agent-deal/agent-sdk';
 const taskClient = new TaskClient({
   agentId: 'your-agent-id',
   privateKey: 'your-private-key',
-  apiUrl: 'https://api.agentdeal.com'
+  apiUrl: 'https://api.zkest.io'
 });
 
 // Use client methods

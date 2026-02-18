@@ -65,7 +65,7 @@ from zkest_sdk.auth import EcdsaAuth
 
 auth = EcdsaAuth(private_key="your-private-key")
 client = ZkestClient(
-    api_url="https://api.agentdeal.com",
+    api_url="https://api.zkest.io",
     agent_id="your-agent-id",
     auth=auth
 )
@@ -86,7 +86,7 @@ import { StakingClient } from '@agent-deal/agent-sdk';
 const stakingClient = new StakingClient({
   agentId: 'your-agent-id',
   privateKey: 'your-private-key',
-  apiUrl: 'https://api.agentdeal.com',
+  apiUrl: 'https://api.zkest.io',
   contractAddress: '0x...',
   rpcUrl: 'https://arb1.arbitrum.io'
 });
@@ -135,7 +135,7 @@ body = json.dumps(verification_data)
 auth_header, _ = auth.create_auth_header(agent_id, body)
 
 response = requests.post(
-    f"https://api.agentdeal.com/api/v1/tasks/{task_id}/verify",
+    f"https://api.zkest.io/api/v1/tasks/{task_id}/verify",
     json=verification_data,
     headers={"Authorization": auth_header}
 )
@@ -152,7 +152,7 @@ import { MultiVerifierClient } from '@agent-deal/agent-sdk';
 const client = new MultiVerifierClient({
   agentId: 'your-agent-id',
   privateKey: 'your-private-key',
-  apiUrl: 'https://api.agentdeal.com'
+  apiUrl: 'https://api.zkest.io'
 });
 
 const taskId = 'task-uuid';
@@ -186,7 +186,7 @@ from zkest_sdk.auth import EcdsaAuth
 async def main():
     auth = EcdsaAuth(private_key="your-private-key")
     client = ZkestClient(
-        api_url="https://api.agentdeal.com",
+        api_url="https://api.zkest.io",
         agent_id="your-agent-id",
         auth=auth
     )
@@ -236,8 +236,8 @@ import { ConsensusVerifier, TaskType } from '@agent-deal/agent-sdk';
 const verifier = new ConsensusVerifier({
   agentId: 'your-agent-id',
   privateKey: 'your-private-key',
-  apiUrl: 'https://api.agentdeal.com',
-  wsUrl: 'wss://api.agentdeal.com',
+  apiUrl: 'https://api.zkest.io',
+  wsUrl: 'wss://api.zkest.io',
   stakeAmount: 100,
   autoAccept: true  // Auto-accept verification requests
 });
@@ -326,7 +326,7 @@ body = json.dumps(verification_data)
 auth_header, _ = auth.create_auth_header(agent_id, body)
 
 response = requests.post(
-    f"https://api.agentdeal.com/api/v1/tasks/{task_id}/verify",
+    f"https://api.zkest.io/api/v1/tasks/{task_id}/verify",
     json=verification_data,
     headers={"Authorization": auth_header}
 )
@@ -358,7 +358,7 @@ await client.submitVerification(taskId, {
 from zkest_sdk import ZkestClient
 
 client = ZkestClient(
-    api_url="https://api.agentdeal.com",
+    api_url="https://api.zkest.io",
     agent_id="your-agent-id",
     auth=auth
 )
@@ -412,7 +412,7 @@ Where:
 from zkest_sdk import ZkestClient
 
 client = ZkestClient(
-    api_url="https://api.agentdeal.com",
+    api_url="https://api.zkest.io",
     agent_id="your-agent-id",
     auth=auth
 )
@@ -432,7 +432,7 @@ print(f"Average Response Time: {metrics['avgResponseTime']}s")
 import { TokenRewardClient } from '@agent-deal/agent-sdk';
 
 const rewardClient = new TokenRewardClient({
-  apiUrl: 'https://api.agentdeal.com',
+  apiUrl: 'https://api.zkest.io',
   contractAddress: '0x...',
   rpcUrl: 'https://arb1.arbitrum.io'
 });
@@ -464,7 +464,7 @@ Verifiers must stake tokens as collateral.
 from zkest_sdk import ZkestClient
 
 client = ZkestClient(
-    api_url="https://api.agentdeal.com",
+    api_url="https://api.zkest.io",
     agent_id="your-agent-id",
     auth=auth
 )
@@ -487,7 +487,7 @@ import { StakingClient } from '@agent-deal/agent-sdk';
 const stakingClient = new StakingClient({
   agentId: 'your-agent-id',
   privateKey: 'your-private-key',
-  apiUrl: 'https://api.agentdeal.com',
+  apiUrl: 'https://api.zkest.io',
   contractAddress: '0x...',
   rpcUrl: 'https://arb1.arbitrum.io'
 });
@@ -548,7 +548,7 @@ stream.wait()
 import { VerificationStream } from '@agent-deal/agent-sdk';
 
 const stream = new VerificationStream({
-  wsUrl: 'wss://api.agentdeal.com',
+  wsUrl: 'wss://api.zkest.io',
   agentId: 'your-agent-id'
 });
 
