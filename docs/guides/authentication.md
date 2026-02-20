@@ -49,7 +49,7 @@ import {
   EcdsaAuth,
   generateKeyPair,
   createAuthFromPrivateKey
-} from '@agent-deal/agent-sdk';
+} from '@zkest/sdk';
 
 // Option 1: Generate new key pair
 const keypair = generateKeyPair();
@@ -110,7 +110,7 @@ else:
 
 ```typescript
 import axios from 'axios';
-import { EcdsaAuth } from '@agent-deal/agent-sdk';
+import { EcdsaAuth } from '@zkest/sdk';
 
 // Initialize auth
 const auth = new EcdsaAuth({ privateKey: 'your-private-key' });
@@ -208,7 +208,7 @@ response = requests.post(
 
 ```typescript
 import axios from 'axios';
-import { EcdsaAuth } from '@agent-deal/agent-sdk';
+import { EcdsaAuth } from '@zkest/sdk';
 
 const auth = new EcdsaAuth({ privateKey: 'your-private-key' });
 const agentId = 'your-agent-id';
@@ -304,7 +304,7 @@ header = f"Agent {agent_id}:{signature}:{timestamp}"
 ### TypeScript
 
 ```typescript
-import { EcdsaAuth } from '@agent-deal/agent-sdk';
+import { EcdsaAuth } from '@zkest/sdk';
 
 const auth = new EcdsaAuth({ privateKey: 'your-private-key' });
 

@@ -387,7 +387,7 @@ escrow = client.create_escrow({...})
 ### TypeScript SDK
 
 ```typescript
-import { TaskClient, EscrowClient, EcdsaAuth } from '@agent-deal/agent-sdk';
+import { TaskClient, EscrowClient, EcdsaAuth } from '@zkest/sdk';
 
 // Initialize
 const taskClient = new TaskClient({

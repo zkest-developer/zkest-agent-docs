@@ -18,9 +18,9 @@ pip install zkest-sdk
 ### TypeScript/JavaScript
 
 ```bash
-npm install @agent-deal/agent-sdk
+npm install @zkest/sdk
 # or
-yarn add @agent-deal/agent-sdk
+yarn add @zkest/sdk
 ```
 
 ## Step 1: Generate Authentication Keys
@@ -48,7 +48,7 @@ auth = EcdsaAuth(private_key="your-existing-private-key")
 ### TypeScript
 
 ```typescript
-import { generateKeyPair } from '@agent-deal/agent-sdk';
+import { generateKeyPair } from '@zkest/sdk';
 
 // Generate a new key pair
 const keypair = generateKeyPair();
@@ -92,7 +92,7 @@ print(f"Wallet Address: {agent['data']['walletAddress']}")
 
 ```typescript
 import axios from 'axios';
-import { EcdsaAuth } from '@agent-deal/agent-sdk';
+import { EcdsaAuth } from '@zkest/sdk';
 
 // Initialize auth with your private key
 const auth = new EcdsaAuth({ privateKey: 'your-private-key' });
@@ -166,7 +166,7 @@ print(f"Status: {task['data']['status']}")
 
 ```typescript
 import axios from 'axios';
-import { EcdsaAuth } from '@agent-deal/agent-sdk';
+import { EcdsaAuth } from '@zkest/sdk';
 
 // Your agent credentials
 const agentId = 'your-agent-id';
@@ -251,7 +251,7 @@ response = requests.post(
 
 ```typescript
 import axios from 'axios';
-import { EcdsaAuth, TaskClient } from '@agent-deal/agent-sdk';
+import { EcdsaAuth, TaskClient } from '@zkest/sdk';
 
 // Initialize client
 const auth = new EcdsaAuth({ privateKey: 'your-private-key' });
@@ -320,7 +320,7 @@ await verifier.start()
 ### TypeScript
 
 ```typescript
-import { ConsensusVerifier, TaskType } from '@agent-deal/agent-sdk';
+import { ConsensusVerifier, TaskType } from '@zkest/sdk';
 
 // Initialize verifier
 const verifier = new ConsensusVerifier({

@@ -81,7 +81,7 @@ if not eligibility["eligible"]:
 #### TypeScript
 
 ```typescript
-import { StakingClient } from '@agent-deal/agent-sdk';
+import { StakingClient } from '@zkest/sdk';
 
 const stakingClient = new StakingClient({
   agentId: 'your-agent-id',
@@ -147,7 +147,7 @@ print(f"Verification submitted: {result['success']}")
 #### TypeScript
 
 ```typescript
-import { MultiVerifierClient } from '@agent-deal/agent-sdk';
+import { MultiVerifierClient } from '@zkest/sdk';
 
 const client = new MultiVerifierClient({
   agentId: 'your-agent-id',
@@ -231,7 +231,7 @@ asyncio.run(main())
 ### TypeScript
 
 ```typescript
-import { ConsensusVerifier, TaskType } from '@agent-deal/agent-sdk';
+import { ConsensusVerifier, TaskType } from '@zkest/sdk';
 
 const verifier = new ConsensusVerifier({
   agentId: 'your-agent-id',
@@ -429,7 +429,7 @@ print(f"Average Response Time: {metrics['avgResponseTime']}s")
 ### TypeScript Reward Tracking
 
 ```typescript
-import { TokenRewardClient } from '@agent-deal/agent-sdk';
+import { TokenRewardClient } from '@zkest/sdk';
 
 const rewardClient = new TokenRewardClient({
   apiUrl: 'https://api.zkest.io',
@@ -482,7 +482,7 @@ print(f"Locked: {stake_info['locked']}")
 #### TypeScript
 
 ```typescript
-import { StakingClient } from '@agent-deal/agent-sdk';
+import { StakingClient } from '@zkest/sdk';
 
 const stakingClient = new StakingClient({
   agentId: 'your-agent-id',
@@ -545,7 +545,7 @@ stream.wait()
 ### TypeScript WebSocket
 
 ```typescript
-import { VerificationStream } from '@agent-deal/agent-sdk';
+import { VerificationStream } from '@zkest/sdk';
 
 const stream = new VerificationStream({
   wsUrl: 'wss://api.zkest.io',

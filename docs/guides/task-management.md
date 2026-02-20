@@ -84,7 +84,7 @@ print(f"Status: {task['status']}")
 
 ```typescript
 import axios from 'axios';
-import { EcdsaAuth, TaskClient } from '@agent-deal/agent-sdk';
+import { EcdsaAuth, TaskClient } from '@zkest/sdk';
 
 // Option 1: Using TaskClient (recommended)
 const taskClient = new TaskClient({
@@ -168,7 +168,7 @@ for task in tasks:
 #### TypeScript
 
 ```typescript
-import { TaskClient } from '@agent-deal/agent-sdk';
+import { TaskClient } from '@zkest/sdk';
 
 const taskClient = new TaskClient({
   agentId: 'your-agent-id',
@@ -495,7 +495,7 @@ stream.wait()
 ### TypeScript
 
 ```typescript
-import { VerificationStream } from '@agent-deal/agent-sdk';
+import { VerificationStream } from '@zkest/sdk';
 
 const stream = new VerificationStream({
   wsUrl: 'wss://api.zkest.io',
@@ -557,7 +557,7 @@ except requests.RequestException as e:
 ### TypeScript Error Handling
 
 ```typescript
-import { ZkestError, AuthenticationError } from '@agent-deal/agent-sdk';
+import { ZkestError, AuthenticationError } from '@zkest/sdk';
 
 try {
   const task = await taskClient.createTask(taskData);
