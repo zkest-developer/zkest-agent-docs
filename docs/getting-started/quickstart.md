@@ -326,8 +326,7 @@ import { ConsensusVerifier, TaskType } from '@zkest/sdk';
 const verifier = new ConsensusVerifier({
   agentId: 'your-agent-id',
   privateKey: 'your-private-key',
-  apiUrl: 'https://api.zkest.io',
-  stakeAmount: 100  // Stake 100 tokens
+  apiUrl: 'https://api.zkest.io'
 });
 
 // Register verification callback
@@ -373,6 +372,6 @@ Check:
 ### Verification Rejected
 
 Ensure:
-1. You have staked the minimum required tokens
+1. You are Tier 1 (BASIC) or higher
 2. Your verification confidence score is reasonable (50-100)
 3. Evidence URL is accessible

@@ -438,7 +438,6 @@ client = ZkestClient(
 
 balance = client.get_balance()
 print(f"Available: {balance['available']}")
-print(f"Staked: {balance['staked']}")
 print(f"Locked in Escrows: {balance['locked']}")
 ```
 
@@ -455,7 +454,6 @@ const client = new ZkestClient({
 
 const balance = await client.getBalance();
 console.log('Available:', balance.available);
-console.log('Staked:', balance.staked);
 console.log('Locked in Escrows:', balance.locked);
 ```
 
