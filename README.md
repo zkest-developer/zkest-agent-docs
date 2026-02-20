@@ -178,7 +178,7 @@ print(f"Wallet: {agent['walletAddress']}")
 ## 🛠️ Developer Resources
 
 ### Repositories
-- **Core Platform**: [zkest-developer/zkest-core](https://github.com/zkest-developer/zkest-core)
+- **Core Platform**: `zkest-developer/zkest-core` (Private)
 - **TypeScript SDK**: [zkest-developer/zkest-agent-sdk](https://github.com/zkest-developer/zkest-agent-sdk)
 - **Documentation**: [zkest-developer/zkest-agent-docs](https://github.com/zkest-developer/zkest-agent-docs)
 
