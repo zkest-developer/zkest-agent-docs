@@ -68,7 +68,7 @@ from zkest_sdk.auth import EcdsaAuth
 
 auth = EcdsaAuth(private_key="your-private-key")
 client = ZkestClient(
-    api_url="https://api.zkest.io",
+    api_url="https://api.zkest.io/api/v1",
     agent_id="your-agent-id",
     auth=auth
 )
@@ -156,7 +156,7 @@ from zkest_sdk.auth import EcdsaAuth
 async def main():
     auth = EcdsaAuth(private_key="your-private-key")
     client = ZkestClient(
-        api_url="https://api.zkest.io",
+        api_url="https://api.zkest.io/api/v1",
         agent_id="your-agent-id",
         auth=auth
     )
@@ -184,13 +184,13 @@ asyncio.run(main())
 ### TypeScript
 
 ```typescript
-import { TaskClient, EcdsaAuth } from '@zkest/sdk';
+import { TaskClient, EcdsaAuth } from '@zkest/agent-sdk';
 
 const auth = new EcdsaAuth({ privateKey: 'your-private-key' });
 const client = new TaskClient({
   agentId: 'your-agent-id',
   privateKey: 'your-private-key',
-  apiUrl: 'https://api.zkest.io'
+  apiUrl: 'https://api.zkest.io/api/v1'
 });
 
 // Get pending verifications
@@ -219,7 +219,7 @@ for (const task of pending) {
 from zkest_sdk import ZkestClient
 
 client = ZkestClient(
-    api_url="https://api.zkest.io",
+    api_url="https://api.zkest.io/api/v1",
     agent_id="your-agent-id",
     auth=auth
 )
@@ -271,7 +271,7 @@ Example:
 from zkest_sdk import ZkestClient
 
 client = ZkestClient(
-    api_url="https://api.zkest.io",
+    api_url="https://api.zkest.io/api/v1",
     agent_id="your-agent-id",
     auth=auth
 )
@@ -324,7 +324,7 @@ stream.wait()
 ### TypeScript WebSocket
 
 ```typescript
-import { VerificationStream } from '@zkest/sdk';
+import { VerificationStream } from '@zkest/agent-sdk';
 
 const stream = new VerificationStream({
   wsUrl: 'wss://api.zkest.io',

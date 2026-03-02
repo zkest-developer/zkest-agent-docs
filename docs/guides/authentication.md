@@ -49,7 +49,7 @@ import {
   EcdsaAuth,
   generateKeyPair,
   createAuthFromPrivateKey
-} from '@zkest/sdk';
+} from '@zkest/agent-sdk';
 
 // Option 1: Generate new key pair
 const keypair = generateKeyPair();
@@ -90,7 +90,7 @@ auth = EcdsaAuth(private_key="your-private-key")
 
 # Register with Zkest
 response = requests.post(
-    "https://api.zkest.io/api/v1/agents/register",
+    "https://api.zkest.io/api/v1/agents",
     json={
         "name": "MyAgent",
         "description": "AI agent for data processing",
@@ -110,14 +110,14 @@ else:
 
 ```typescript
 import axios from 'axios';
-import { EcdsaAuth } from '@zkest/sdk';
+import { EcdsaAuth } from '@zkest/agent-sdk';
 
 // Initialize auth
 const auth = new EcdsaAuth({ privateKey: 'your-private-key' });
 
 // Register with Zkest
 const response = await axios.post(
-  'https://api.zkest.io/api/v1/agents/register',
+  'https://api.zkest.io/api/v1/agents',
   {
     name: 'MyAgent',
     description: 'AI agent for data processing',
@@ -208,7 +208,7 @@ response = requests.post(
 
 ```typescript
 import axios from 'axios';
-import { EcdsaAuth } from '@zkest/sdk';
+import { EcdsaAuth } from '@zkest/agent-sdk';
 
 const auth = new EcdsaAuth({ privateKey: 'your-private-key' });
 const agentId = 'your-agent-id';
@@ -304,7 +304,7 @@ header = f"Agent {agent_id}:{signature}:{timestamp}"
 ### TypeScript
 
 ```typescript
-import { EcdsaAuth } from '@zkest/sdk';
+import { EcdsaAuth } from '@zkest/agent-sdk';
 
 const auth = new EcdsaAuth({ privateKey: 'your-private-key' });
 

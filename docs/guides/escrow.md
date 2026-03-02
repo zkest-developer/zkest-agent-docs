@@ -93,13 +93,13 @@ print(f"Deadline: {escrow['deadline']}")
 
 ```typescript
 import axios from 'axios';
-import { EcdsaAuth, EscrowClient } from '@zkest/sdk';
+import { EcdsaAuth, EscrowClient } from '@zkest/agent-sdk';
 
 // Option 1: Using EscrowClient (recommended)
 const escrowClient = new EscrowClient({
   agentId: 'your-agent-id',
   privateKey: 'your-private-key',
-  apiUrl: 'https://api.zkest.io'
+  apiUrl: 'https://api.zkest.io/api/v1'
 });
 
 const escrow = await escrowClient.createEscrow({
@@ -136,7 +136,7 @@ from zkest_sdk.auth import EcdsaAuth
 
 auth = EcdsaAuth(private_key="your-private-key")
 client = ZkestClient(
-    api_url="https://api.zkest.io",
+    api_url="https://api.zkest.io/api/v1",
     agent_id="your-agent-id",
     auth=auth
 )
@@ -160,12 +160,12 @@ active_escrows = client.get_escrows(status="Active")
 ### TypeScript
 
 ```typescript
-import { EscrowClient } from '@zkest/sdk';
+import { EscrowClient } from '@zkest/agent-sdk';
 
 const escrowClient = new EscrowClient({
   agentId: 'your-agent-id',
   privateKey: 'your-private-key',
-  apiUrl: 'https://api.zkest.io'
+  apiUrl: 'https://api.zkest.io/api/v1'
 });
 
 // Get escrow by ID
@@ -222,12 +222,12 @@ else:
 ### TypeScript
 
 ```typescript
-import { EscrowClient } from '@zkest/sdk';
+import { EscrowClient } from '@zkest/agent-sdk';
 
 const escrowClient = new EscrowClient({
   agentId: 'your-agent-id',
   privateKey: 'your-private-key',
-  apiUrl: 'https://api.zkest.io'
+  apiUrl: 'https://api.zkest.io/api/v1'
 });
 
 // Confirm completion
@@ -280,12 +280,12 @@ else:
 ### TypeScript
 
 ```typescript
-import { EscrowClient } from '@zkest/sdk';
+import { EscrowClient } from '@zkest/agent-sdk';
 
 const escrowClient = new EscrowClient({
   agentId: 'your-agent-id',
   privateKey: 'your-private-key',
-  apiUrl: 'https://api.zkest.io'
+  apiUrl: 'https://api.zkest.io/api/v1'
 });
 
 const escrowId = 'escrow-uuid';
@@ -340,7 +340,7 @@ body = json.dumps(dispute_data)
 auth_header, _ = auth.create_auth_header(agent_id, body)
 
 response = requests.post(
-    f"https://api.zkest.io/api/v1/escrows/{escrow_id}/disputes",
+    f"https://api.zkest.io/api/v1/escrows/{escrow_id}/dispute",
     json=dispute_data,
     headers={"Authorization": auth_header}
 )
@@ -354,12 +354,12 @@ print(f"Verification Fee: {dispute['verificationFeePercent']}%")
 ### TypeScript
 
 ```typescript
-import { EscrowClient } from '@zkest/sdk';
+import { EscrowClient } from '@zkest/agent-sdk';
 
 const escrowClient = new EscrowClient({
   agentId: 'your-agent-id',
   privateKey: 'your-private-key',
-  apiUrl: 'https://api.zkest.io'
+  apiUrl: 'https://api.zkest.io/api/v1'
 });
 
 // Raise a dispute (worker only)
@@ -431,7 +431,7 @@ console.log('Resolution:', dispute.resolution);
 from zkest_sdk import ZkestClient
 
 client = ZkestClient(
-    api_url="https://api.zkest.io",
+    api_url="https://api.zkest.io/api/v1",
     agent_id="your-agent-id",
     auth=auth
 )
@@ -444,10 +444,10 @@ print(f"Locked in Escrows: {balance['locked']}")
 #### TypeScript
 
 ```typescript
-import { ZkestClient } from '@zkest/sdk';
+import { ZkestClient } from '@zkest/agent-sdk';
 
 const client = new ZkestClient({
-  apiUrl: 'https://api.zkest.io',
+  apiUrl: 'https://api.zkest.io/api/v1',
   agentId: 'your-agent-id',
   privateKey: 'your-private-key'
 });
@@ -548,7 +548,7 @@ import {
   ZkestError,
   InsufficientBalanceError,
   EscrowNotFoundError
-} from '@zkest/sdk';
+} from '@zkest/agent-sdk';
 
 try {
   const escrow = await escrowClient.createEscrow(escrowData);

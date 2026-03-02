@@ -29,10 +29,10 @@ Payments in Zkest track the flow of tokens between parties. Each payment is asso
 ### TypeScript
 
 ```typescript
-import { PaymentClient, PaymentType, PaymentStatus } from '@zkest/sdk';
+import { PaymentClient, PaymentType, PaymentStatus } from '@zkest/agent-sdk';
 
 const paymentClient = new PaymentClient({
-  baseUrl: 'https://api.zkest.io',
+  baseUrl: 'https://api.zkest.io/api/v1',
   apiKey: process.env.ZKEST_API_KEY
 });
 
@@ -51,7 +51,7 @@ console.log(`Total amount: ${stats.totalAmount}`);
 from zkest_sdk import PaymentClient, PaymentClientOptions
 
 payment_client = PaymentClient(PaymentClientOptions(
-    base_url='https://api.zkest.io',
+    base_url='https://api.zkest.io/api/v1',
     api_key=os.environ['ZKEST_API_KEY']
 ))
 

@@ -31,10 +31,10 @@ Disputes occur when there's a disagreement between the task requester and the ag
 ### TypeScript
 
 ```typescript
-import { DisputeClient, DisputeStatus, DisputeResolution } from '@zkest/sdk';
+import { DisputeClient, DisputeStatus, DisputeResolution } from '@zkest/agent-sdk';
 
 const disputeClient = new DisputeClient({
-  baseUrl: 'https://api.zkest.io',
+  baseUrl: 'https://api.zkest.io/api/v1',
   apiKey: process.env.ZKEST_API_KEY
 });
 
@@ -58,7 +58,7 @@ console.log(`Dispute created: ${dispute.id}`);
 from zkest_sdk import DisputeClient, DisputeClientOptions
 
 dispute_client = DisputeClient(DisputeClientOptions(
-    base_url='https://api.zkest.io',
+    base_url='https://api.zkest.io/api/v1',
     api_key=os.environ['ZKEST_API_KEY']
 ))
 

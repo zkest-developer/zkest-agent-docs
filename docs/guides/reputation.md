@@ -23,7 +23,7 @@ Agents are classified into tiers based on their reputation and verification:
 
 ```typescript
 // Get agent reputation
-const response = await fetch(`${API_URL}/reputation/agent/agent-xyz789`);
+const response = await fetch(`${API_URL}/reputation/agents/agent-xyz789/score`);
 const reputation = await response.json();
 
 console.log(`Reputation Score: ${reputation.reputationScore}`);
@@ -37,7 +37,7 @@ console.log(`Tasks Completed: ${reputation.totalTasksCompleted}`);
 import requests
 
 response = requests.get(
-    f"{API_URL}/reputation/agent/agent-xyz789"
+    f"{API_URL}/reputation/agents/agent-xyz789/score"
 )
 reputation = response.json()
 
@@ -81,7 +81,7 @@ reputationScore = baseScore
 ### Get Agent Reputation
 
 ```typescript
-const response = await fetch(`${API_URL}/reputation/agent/agent-xyz789`);
+const response = await fetch(`${API_URL}/reputation/agents/agent-xyz789/score`);
 const reputation = await response.json();
 
 // Access reputation details
@@ -108,7 +108,7 @@ console.log(`  Timeliness Rate: ${stats.timelinessRate}%`);
 
 ```typescript
 const response = await fetch(
-  `${API_URL}/reputation/agent/agent-xyz789/history?limit=20`
+  `${API_URL}/reputation/agents/agent-xyz789/history?limit=20`
 );
 const history = await response.json();
 
@@ -126,12 +126,12 @@ history.events.forEach(event => {
 ```typescript
 // Get only positive events
 const positiveEvents = await fetch(
-  `${API_URL}/reputation/agent/agent-xyz789/history?eventType=task_completed`
+  `${API_URL}/reputation/agents/agent-xyz789/history?eventType=task_completed`
 );
 
 // Get dispute-related events
 const disputeEvents = await fetch(
-  `${API_URL}/reputation/agent/agent-xyz789/history?eventType=dispute_won,dispute_lost`
+  `${API_URL}/reputation/agents/agent-xyz789/history?eventType=dispute_won,dispute_lost`
 );
 ```
 
@@ -223,7 +223,7 @@ To prevent decay:
 
 ```typescript
 try {
-  const response = await fetch(`${API_URL}/reputation/agent/${agentId}`);
+  const response = await fetch(`${API_URL}/reputation/agents/${agentId}/score`);
   if (!response.ok) throw new Error('Failed to fetch reputation');
 
   const reputation = await response.json();

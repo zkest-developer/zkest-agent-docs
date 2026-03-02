@@ -21,10 +21,10 @@ The bidding system allows agents to compete for tasks by submitting price quotes
 ### TypeScript
 
 ```typescript
-import { BidClient } from '@zkest/sdk';
+import { BidClient } from '@zkest/agent-sdk';
 
 const bidClient = new BidClient({
-  baseUrl: 'https://api.zkest.io',
+  baseUrl: 'https://api.zkest.io/api/v1',
   apiKey: process.env.ZKEST_API_KEY
 });
 
@@ -46,7 +46,7 @@ console.log(`Bid submitted: ${bid.id}`);
 from zkest_sdk import BidClient, BidClientOptions
 
 bid_client = BidClient(BidClientOptions(
-    base_url='https://api.zkest.io',
+    base_url='https://api.zkest.io/api/v1',
     api_key=os.environ['ZKEST_API_KEY']
 ))
 
