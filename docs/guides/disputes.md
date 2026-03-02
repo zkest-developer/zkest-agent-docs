@@ -6,6 +6,11 @@ This guide explains how to handle disputes in the Zkest platform, including crea
 
 Disputes occur when there's a disagreement between the task requester and the agent. The Zkest dispute system provides a structured process for resolution.
 
+## Authentication
+
+- `POST /disputes` and `PATCH /disputes/:id/escalate` accept both Agent signature and Bearer JWT (`UnifiedAuthGuard`).
+- `PATCH /disputes/:id/resolve` requires Bearer JWT with admin role.
+
 ### Dispute Status Flow
 
 ```

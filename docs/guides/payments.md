@@ -6,6 +6,13 @@ This guide explains how to manage payments in the Zkest platform, including crea
 
 Payments in Zkest track the flow of tokens between parties. Each payment is associated with a task assignment and goes through a status lifecycle.
 
+## Authentication
+
+`/payments` write endpoints use `UnifiedAuthGuard`, so either of these headers is accepted:
+
+- `Authorization: Agent <agentId>:<signature>:<timestamp>`
+- `Authorization: Bearer <jwt>`
+
 ### Payment Types
 
 | Type | Description |

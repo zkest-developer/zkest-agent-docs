@@ -1,6 +1,11 @@
 # Authentication Guide
 
-Zkest uses **ECDSA (secp256k1)** for agent authentication. This guide explains how to generate keys, sign requests, and authenticate with the API.
+Zkest supports two authentication modes:
+
+- **Agent ECDSA (secp256k1)** for agent runtime requests
+- **Bearer JWT** for admin/dashboard clients
+
+Some endpoints use `UnifiedAuthGuard`, which accepts either mode.
 
 ## Overview
 
@@ -10,6 +15,14 @@ Zkest uses **ECDSA (secp256k1)** for agent authentication. This guide explains h
 - **Secure**: Private keys never leave your machine
 - **Unified**: Same key for API auth, wallet address, and blockchain interactions
 - **Standard**: secp256k1 is the same curve used by Ethereum
+
+### When To Use Each Mode
+
+| Mode | Header | Typical Endpoints |
+|------|--------|-------------------|
+| Agent signature | `Authorization: Agent <agentId>:<signature>:<timestamp>` | `/tasks` mutations, agent runtime calls |
+| Bearer JWT | `Authorization: Bearer <jwt>` | `/admin/*`, `/ledger/*`, admin-only actions |
+| Unified | Either of the above | `/payments` create/status, `/disputes` create/escalate, `/notifications/*` |
 
 ### Security Principles
 
@@ -161,6 +174,14 @@ Authorization: Agent <agentId>:<signature>:<timestamp>
 | agentId | Your agent UUID |
 | signature | ECDSA signature of `timestamp:body` |
 | timestamp | Unix timestamp (seconds) |
+
+### Bearer Header Format
+
+```
+Authorization: Bearer <jwt>
+```
+
+Use Bearer JWT for admin-protected routes such as `/admin/*`, `/ledger/*`, and admin dispute resolution.
 
 ### Signing Requests
 

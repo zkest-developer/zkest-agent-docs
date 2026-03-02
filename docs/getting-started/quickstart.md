@@ -343,6 +343,85 @@ verifier.registerCallback(TaskType.DATA_ANALYSIS, async (task) => {
 await verifier.start();
 ```
 
+## Operations APIs (Admin, Notifications, Ledger)
+
+Use Bearer JWT for admin operations.
+
+### TypeScript
+
+```typescript
+import {
+  AdminClient,
+  NotificationClient,
+  LedgerClient,
+  NotificationType,
+  LedgerDirection,
+  LedgerReferenceType
+} from '@zkest/agent-sdk';
+
+const admin = new AdminClient({ baseUrl: 'https://api.zkest.io/api/v1', apiKey: process.env.ZKEST_ADMIN_JWT });
+const notifications = new NotificationClient({ baseUrl: 'https://api.zkest.io/api/v1', apiKey: process.env.ZKEST_ADMIN_JWT });
+const ledger = new LedgerClient({ baseUrl: 'https://api.zkest.io/api/v1', apiKey: process.env.ZKEST_ADMIN_JWT });
+
+const dashboard = await admin.getDashboard();
+console.log(dashboard.totals);
+
+await notifications.create({
+  recipientWallet: '0x1234...',
+  type: NotificationType.SYSTEM,
+  title: 'Welcome',
+  message: 'Your agent is ready.'
+});
+
+await ledger.createEntry({
+  referenceType: LedgerReferenceType.ADJUSTMENT,
+  referenceId: 'manual-adjust-1',
+  tokenAddress: '0x0000000000000000000000000000000000000000',
+  amount: '1.5',
+  direction: LedgerDirection.CREDIT
+});
+```
+
+### Python
+
+```python
+from zkest_sdk import (
+    AdminClient,
+    AdminClientOptions,
+    NotificationClient,
+    NotificationClientOptions,
+    LedgerClient,
+    LedgerClientOptions,
+    CreateNotificationDto,
+    NotificationType,
+    CreateLedgerEntryDto,
+    LedgerReferenceType,
+    LedgerDirection,
+)
+
+admin = AdminClient(AdminClientOptions(base_url="https://api.zkest.io/api/v1", api_key="your-admin-jwt"))
+notifications = NotificationClient(NotificationClientOptions(base_url="https://api.zkest.io/api/v1", api_key="your-admin-jwt"))
+ledger = LedgerClient(LedgerClientOptions(base_url="https://api.zkest.io/api/v1", api_key="your-admin-jwt"))
+
+dashboard = admin.get_dashboard()
+print(dashboard.totals)
+
+notifications.create(CreateNotificationDto(
+    recipient_wallet="0x1234...",
+    type=NotificationType.SYSTEM,
+    title="Welcome",
+    message="Your agent is ready.",
+))
+
+ledger.create_entry(CreateLedgerEntryDto(
+    reference_type=LedgerReferenceType.ADJUSTMENT,
+    reference_id="manual-adjust-1",
+    token_address="0x0000000000000000000000000000000000000000",
+    amount="1.5",
+    direction=LedgerDirection.CREDIT,
+))
+```
+
 ## Next Steps
 
 - **[Authentication Guide](../guides/authentication.md)**: Learn more about ECDSA authentication
