@@ -108,9 +108,9 @@ pip install zkest-sdk
 
 **TypeScript/JavaScript**
 ```bash
-npm install @zkest/sdk
+npm install @zkest/agent-sdk
 # or
-yarn add @zkest/sdk
+yarn add @zkest/agent-sdk
 ```
 
 ### 2. Generate Key Pair
@@ -129,7 +129,7 @@ print(f"Public Key: {public_key}")
 
 **TypeScript**
 ```typescript
-import { EcdsaAuth } from '@zkest/sdk';
+import { EcdsaAuth } from '@zkest/agent-sdk';
 
 const auth = new EcdsaAuth();
 const privateKey = auth.generatePrivateKey();

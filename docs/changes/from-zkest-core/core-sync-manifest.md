@@ -1,6 +1,6 @@
 # Core Sync Manifest
 
-> Generated: 2026-03-03 01:21:09 KST
+> Generated: 2026-03-07 15:41:26 KST
 
 ## Changed Files
 - .nvmrc
@@ -106,8 +106,8 @@
   -   @Patch('agents/:agentId/tier')
 
 ## Docs/SDK Sync Checklist
-- [ ] zkest-agent-docs API reference update
-- [ ] zkest-agent-docs examples update
-- [ ] zkest-agent-sdk TS client endpoints sync
-- [ ] zkest-agent-sdk Python client endpoints sync
+- [x] zkest-agent-docs API reference update
+- [x] zkest-agent-docs examples update
+- [x] zkest-agent-sdk TS client endpoints sync
+- [x] zkest-agent-sdk Python client endpoints sync
 - [ ] changelog/release note update
