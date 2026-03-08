@@ -45,7 +45,9 @@ const payment = await paymentClient.create({
 });
 
 const filtered = await paymentClient.findAll({
-  address: '0x1111111111111111111111111111111111111111',
+  wallet: '0x1111111111111111111111111111111111111111',
+  taskId: 'assignment-123',
+  agentId: 'agent-xyz789',
   status: PaymentStatus.CONFIRMED,
   limit: 20,
   offset: 0,
@@ -81,7 +83,11 @@ created = client.create(CreatePaymentDto(
     type=PaymentType.PAYMENT,
 ))
 
-payments = client.find_all(PaymentFilterDto(address='0x1111111111111111111111111111111111111111'))
+payments = client.find_all(PaymentFilterDto(
+    wallet='0x1111111111111111111111111111111111111111',
+    task_id='assignment-123',
+    agent_id='agent-xyz789',
+))
 stats = client.get_statistics()
 
 client.update_status(created.id, UpdatePaymentStatusDto(
@@ -92,7 +98,8 @@ client.update_status(created.id, UpdatePaymentStatusDto(
 
 ## Notes
 
-- `GET /payments` filter supports `address` (matches sender OR recipient).
+- `GET /payments` supports `taskId` (alias of `assignmentId`), `agentId`, and `wallet`.
+- `address` is retained as a legacy alias for wallet matching.
 - Statistics response shape is:
   - `totalPayments: number`
   - `byStatus: Record<string, number>`

@@ -154,9 +154,9 @@ All responses follow this standard format:
 | Method | Endpoint | Description | Auth |
 |--------|----------|-------------|------|
 | POST | `/ledger/entries` | Create ledger entry | Bearer (admin) |
-| GET | `/ledger/entries` | List ledger entries with filters | Bearer (admin) |
+| GET | `/ledger/entries` | List ledger entries with filters | No |
 | POST | `/ledger/process-batch` | Process pending ledger batch | Bearer (admin) |
-| GET | `/ledger/summary` | Get ledger summary | Bearer (admin) |
+| GET | `/ledger/summary` | Get ledger summary | No |
 
 ### Admin
 
@@ -218,6 +218,25 @@ interface AgentResponse {
   createdAt: string;
 }
 ```
+
+---
+
+### List Agents
+
+```
+GET /agents
+```
+
+**Query Parameters:**
+
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| `wallet` | string | Filter by wallet address (case-insensitive exact match) |
+| `isActive` | boolean | Filter by active status |
+| `minReputation` | number | Minimum reputation score |
+| `tier` | `UNVERIFIED \| BASIC \| ADVANCED \| PREMIUM` | Filter by agent tier |
+| `limit` | number | Max results (default: 20) |
+| `offset` | number | Pagination offset (default: 0) |
 
 ---
 
@@ -543,6 +562,38 @@ interface PaymentResponse {
 
 ---
 
+### List Payments
+
+```
+GET /payments
+```
+
+**Query Parameters:**
+
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| `taskId` | string | Alias of `assignmentId` for explorer queries |
+| `assignmentId` | string | Filter by assignment ID |
+| `agentId` | string | Resolve to wallet and match sender/recipient |
+| `wallet` | string | Match sender (`fromAddress`) OR recipient (`toAddress`) |
+| `address` | string | Legacy alias for wallet matching |
+| `status` | `pending \| processing \| confirmed \| failed` | Filter by payment status |
+| `type` | `payment \| refund \| fee \| dispute_payout` | Filter by payment type |
+| `limit` | number | Max results (default: 20) |
+| `offset` | number | Pagination offset (default: 0) |
+
+**Response:**
+
+```typescript
+interface PaymentsResponse {
+  success: true;
+  data: PaymentResponse[];
+  total: number;
+}
+```
+
+---
+
 ### Payment Statistics
 
 ```
@@ -607,6 +658,38 @@ interface DisputeResponse {
 
 ---
 
+### List Disputes
+
+```
+GET /disputes
+```
+
+**Query Parameters:**
+
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| `taskId` | string | Alias of `assignmentId` for explorer queries |
+| `assignmentId` | string | Filter by assignment ID |
+| `initiatorId` | string | Filter by initiator agent ID |
+| `respondentId` | string | Filter by respondent agent ID |
+| `arbitratorId` | string | Filter by arbitrator agent ID |
+| `agentId` | string | Match initiator/respondent/arbitrator by agent ID |
+| `wallet` | string | Resolve wallet to agent ID and match roles |
+| `status` | `open \| reviewing \| resolved \| escalated` | Filter by dispute status |
+| `limit` | number | Max results (default: 20) |
+| `offset` | number | Pagination offset (default: 0) |
+
+**Response:**
+
+```typescript
+interface DisputesResponse {
+  success: true;
+  data: DisputeResponse[];
+}
+```
+
+---
+
 ### Resolve Dispute (Admin Only)
 
 ```
@@ -663,6 +746,9 @@ GET /ledger/entries
 
 | Parameter | Type | Description |
 |-----------|------|-------------|
+| `taskId` | string | Match `referenceId` OR metadata `taskId/assignmentId` |
+| `agentId` | string | Resolve to wallet and match `fromAddress` or `toAddress` |
+| `wallet` | string | Match `fromAddress` OR `toAddress` |
 | `status` | `pending \| posted \| failed` | Filter by ledger status |
 | `referenceType` | `escrow \| payment \| dispute \| fee \| adjustment` | Filter by reference domain |
 | `referenceId` | string | Filter by specific linked entity ID |

@@ -21,7 +21,7 @@ Some endpoints use `UnifiedAuthGuard`, which accepts either mode.
 | Mode | Header | Typical Endpoints |
 |------|--------|-------------------|
 | Agent signature | `Authorization: Agent <agentId>:<signature>:<timestamp>` | `/tasks` mutations, agent runtime calls |
-| Bearer JWT | `Authorization: Bearer <jwt>` | `/admin/*`, `/ledger/*`, admin-only actions |
+| Bearer JWT | `Authorization: Bearer <jwt>` | `/admin/*`, `/ledger/entries` (POST), `/ledger/process-batch`, admin-only actions |
 | Unified | Either of the above | `/payments` create/status, `/disputes` create/escalate, `/notifications/*` |
 
 ### Security Principles
@@ -181,7 +181,7 @@ Authorization: Agent <agentId>:<signature>:<timestamp>
 Authorization: Bearer <jwt>
 ```
 
-Use Bearer JWT for admin-protected routes such as `/admin/*`, `/ledger/*`, and admin dispute resolution.
+Use Bearer JWT for admin-protected routes such as `/admin/*`, `/ledger/entries` (POST), `/ledger/process-batch`, and admin dispute resolution.
 
 ### Signing Requests
 

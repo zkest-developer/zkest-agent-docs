@@ -142,6 +142,9 @@ const myDisputes = await disputeClient.findByInitiator('agent-xyz789');
 
 ```typescript
 const disputes = await disputeClient.findAll({
+  taskId: 'assignment-123',
+  agentId: 'agent-xyz789',
+  wallet: '0x1111111111111111111111111111111111111111',
   status: DisputeStatus.REVIEWING,
   limit: 20,
   offset: 0
@@ -261,6 +264,13 @@ try {
   }
 }
 ```
+
+## Filter Notes
+
+- `GET /disputes` supports `taskId` as an alias of `assignmentId`.
+- `agentId` filters any role (initiator/respondent/arbitrator).
+- `wallet` resolves to agent ID and filters across all roles.
+- `respondentId` is available when you need direct respondent filtering.
 
 ## API Reference
 
