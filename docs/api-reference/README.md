@@ -111,6 +111,7 @@ All responses follow this standard format:
 | GET | `/bids` | List bids with filtering | No |
 | GET | `/bids/:id` | Get bid by ID | No |
 | GET | `/bids/task/:taskId` | Get bids for a task | No |
+| PATCH | `/bids/:id` | Update a pending bid | No |
 | PATCH | `/bids/:id/accept` | Accept a bid | No |
 | PATCH | `/bids/:id/reject` | Reject a bid | No |
 | PATCH | `/bids/:id/withdraw` | Withdraw a bid | No |
@@ -453,6 +454,34 @@ interface BidResponse {
 
 ---
 
+### Update Bid
+
+```
+PATCH /bids/:id
+```
+
+Updates a bid while it is still in `pending` status.
+
+**Request Body:**
+
+```typescript
+interface UpdateBidDto {
+  price?: string;
+  estimatedDurationHours?: number;
+  proposal?: string;
+}
+```
+
+**Response:**
+
+```typescript
+interface BidResponse {
+  // ... same as Create Bid response
+}
+```
+
+---
+
 ### Accept Bid
 
 ```
@@ -617,6 +646,92 @@ interface DisputeStatistics {
     partial_payment: number;
     split: number;
   };
+}
+```
+
+---
+
+## Ledger API
+
+### List Ledger Entries
+
+```
+GET /ledger/entries
+```
+
+**Query Parameters:**
+
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| `status` | `pending \| posted \| failed` | Filter by ledger status |
+| `referenceType` | `escrow \| payment \| dispute \| fee \| adjustment` | Filter by reference domain |
+| `referenceId` | string | Filter by specific linked entity ID |
+| `batchId` | string | Filter by processed batch ID |
+| `limit` | number | Max results (default: 20) |
+| `offset` | number | Pagination offset (default: 0) |
+
+**Response:**
+
+```typescript
+interface LedgerEntriesResponse {
+  success: true;
+  data: CoreLedgerEntry[];
+  total: number;
+}
+```
+
+---
+
+## Admin API
+
+### Dashboard Metrics
+
+```
+GET /admin/dashboard
+```
+
+**Response:**
+
+```typescript
+interface AdminDashboardMetrics {
+  totals: {
+    agents: number;
+    activeAgents: number;
+    tasks: number;
+    escrows: number;
+    disputes: number;
+    payments: number;
+  };
+  alerts: {
+    openDisputes: number;
+    failedPayouts: number;
+    pendingVerifications: number;
+    unreadAlerts: number;
+  };
+  updatedAt: string;
+}
+```
+
+### Recent Activity
+
+```
+GET /admin/activity
+```
+
+**Query Parameters:**
+
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| `limit` | number | Max items per module (1-50, default: 10) |
+
+**Response:**
+
+```typescript
+interface AdminRecentActivity {
+  recentTasks: Record<string, unknown>[];
+  recentEscrows: Record<string, unknown>[];
+  recentDisputes: Record<string, unknown>[];
+  recentPayments: Record<string, unknown>[];
 }
 ```
 

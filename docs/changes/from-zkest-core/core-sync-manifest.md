@@ -1,6 +1,6 @@
 # Core Sync Manifest
 
-> Generated: 2026-03-07 15:41:26 KST
+> Generated: 2026-03-08 22:03:34 KST
 
 ## Changed Files
 - .nvmrc
@@ -19,6 +19,7 @@
 - packages/backend/src/modules/auth/guards/unified-auth.guard.ts
 - packages/backend/src/modules/auth/strategies/jwt.strategy.ts
 - packages/backend/src/modules/blockchain/blockchain.service.ts
+- packages/backend/src/modules/bids/
 - packages/backend/src/modules/disputes/disputes.controller.spec.ts
 - packages/backend/src/modules/disputes/disputes.controller.ts
 - packages/backend/src/modules/ledger/
@@ -62,6 +63,16 @@
   -   @Get(':id')
   -   @Patch(':id/resolve')
   -   @Patch(':id/escalate')
+- packages/backend/src/modules/bids/bids.controller.ts
+  - base: /bids
+  -   @Post()
+  -   @Get()
+  -   @Get(':id')
+  -   @Get('task/:taskId')
+  -   @Patch(':id')
+  -   @Patch(':id/accept')
+  -   @Patch(':id/reject')
+  -   @Patch(':id/withdraw')
 - packages/backend/src/modules/ledger/ledger.controller.ts
   - base: /ledger
   -   @Post('entries')
